@@ -5,35 +5,88 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Face-API AI Real-Time Facial Detection</title>
+  <title>リモート会議コンディションチェッカー</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script defer src="face-api.min.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="video.js"></script>
+  <script defer src="audio.js"></script>
 </head>
+
 
 <body>
   <main class="container">
-    <h1>Real-Time facial detection</h1>
-    <p>We will use Javascript and Face-API to create a real time facial detection system</p>
-    <div>
-      <p>
-        <span>X: </span><span id="position_x"></span>
-        <span>Y: </span><span id="position_y"></span>
-      </p>
-      <p>
-        <span>Face Expressions: </span><span id="expressions"></span>
-      </p>
-      <p>
-        <span>Microphone: </span><span id="volume"></span>
-      </p>
-      <p>
-        <span>Brightness: </span><span id="brightness"></span>
-      </p>
+    <div class="explain-container">
+      <h1>リモート会議コンディションチェッカー</h1>
+      <p>リモート会議を利用するデバイスからのインプットデータを解析し、適切であるかを検証します。</p>
     </div>
-    <div id="video-container" class="video-container">
-      <video id="video" autoplay muted width="500" height="500"></video>
+    <div class="main-content">
+      <div class="left-container">
+        <div class="audio-wrapper">
+          <canvas id="audioCanvas"></canvas>
+        </div>
+        <div class="video-wrapper" id="video-wrapper">
+          <video id="video" autoplay muted></video>
+          <!-- <canvas id="overlayCanvas"></canvas> -->
+        </div>
+      </div>
+      <div class="content-section">
+        <div id="user-logs">
+          <div class="face-position">
+            <p class="result_label">顔の位置</p>
+            <p id="face-position-result" class="result_text"></p>
+          </div>
+          <div class="face-expression">
+            <p class="result_label">表情</p>
+            <p id="face-expression-result" class="result_text"></p>
+          </div>
+          <div class="brightness">
+            <p class="result_label">画面の明るさ</p>
+            <p id="brightness-result" class="result_text"></p>
+          </div>
+          <div class="voice-volume">
+            <p class="result_label">声量</p>
+            <p id="voice-volume-result" class="result_text"></p>
+          </div>
+        </div>
+
+        <div id="dev-logs">
+          <h3>Detail Logs</h3>
+          <p>
+            <span>X: </span><span id="position_x"></span>
+            <span>Y: </span><span id="position_y"></span>
+          </p>
+          <p>
+            <span>Face Expressions: </span><span id="expressions"></span>
+          </p>
+          <p>
+            <span>Microphone: </span><span id="volume"></span>
+          </p>
+          <p>
+            <span>Brightness: </span><span id="brightness"></span>
+          </p>
+        </div>
+      </div>
     </div>
+
   </main>
 </body>
 
 </html>
+
+
+
+<!-- <div id="indicator-container" class="indicator-container">
+  <p>
+    <span>X: </span><span id="position_x"></span>
+    <span>Y: </span><span id="position_y"></span>
+  </p>
+  <p>
+    <span>Face Expressions: </span><span id="expressions"></span>
+  </p>
+  <p>
+    <span>Microphone: </span><span id="volume"></span>
+  </p>
+  <p>
+    <span>Brightness: </span><span id="brightness"></span>
+  </p>
+</div> -->

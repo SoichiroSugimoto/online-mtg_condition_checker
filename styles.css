@@ -1,18 +1,81 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
 .container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
+  /* 縦方向に要素を配置 */
+  width: 100vw;
   height: 100vh;
-  text-align: center;
+}
+
+.explain-container {
+  padding: 20px;
+  background-color: #f8f8f8;
+  /* 任意の背景色 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.main-content {
+  display: flex;
   flex: 1;
 }
 
-.video-container {
+.left-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  overflow-y: auto;
+}
+
+.audio-wrapper,
+.video-wrapper {
+  /* flex: 1; */
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.content-section {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  /* 必要に応じてスクロールバーを表示 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+video,
+canvas {
+  width: 100%;
+  height: auto;
+}
+
+.result_label {
+  font-size: 13px;
+  margin-bottom: 1px;
+  color: rgba(190, 190, 190, 1);
+}
+
+.result_text {
+  font-size: 20px;
+  margin-top: 1px;
+  /* 必要に応じて上のマージンを調整 */
+}
+
+#user-logs,
+#dev-logs {
+  padding-bottom: 15%;
+}
+
+.video-wrapper {
   position: relative;
 }
 
-canvas {
+.video-wrapper canvas {
   position: absolute;
   top: 0;
   left: 0;
